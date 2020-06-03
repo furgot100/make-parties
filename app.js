@@ -81,7 +81,6 @@ app.get('/events/:id/edit', (req, res) => {
     })
 });
 
-
 // UPDATE
 app.put('/events/:id', (req, res) => {
     models.Event.findByPk(req.params.id).then(event => {
@@ -94,6 +93,16 @@ app.put('/events/:id', (req, res) => {
       console.log(err);
     });
 });
+
+// DELETE
+app.delete('/events/:id', (req, res) => {
+    models.Event.findByPk(req.params.id).then(event => {
+      event.destroy();
+      res.redirect(`/`);
+    }).catch((err) => {
+      console.log(err);
+    });
+})
 
 
 
