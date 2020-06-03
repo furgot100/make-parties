@@ -19,6 +19,7 @@ const models = require('./db/models');
 app.use(methodOverride('_method'))
 
 require('./controllers/events')(app, models);
+require('./controllers/rsvps')(app, models);
 
 // Use "main" as our default layout
 app.engine('handlebars', hbs.engine);
